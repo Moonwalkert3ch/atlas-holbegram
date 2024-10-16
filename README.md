@@ -22,3 +22,5 @@ Searching for users by name
 The app architecture will consist of React Native on the frontend, interfacing with Firebase Firestore, a NoSQL cloud database, on the backend. We‘ll also utilize Firebase Storage, a dedicated file storage service, for hosting all of the images uploaded to the app.
 
 To manage our app‘s state and data flow, we‘ll implement Redux, a predictable state container for JavaScript apps. And to streamline the React Native development process, we‘ll use Expo, an open-source platform that simplifies building, deploying, and iterating on native apps.
+
+npx expo start
