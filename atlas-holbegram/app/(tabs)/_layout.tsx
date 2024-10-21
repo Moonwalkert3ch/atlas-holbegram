@@ -51,12 +51,19 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="profile/index"
         options={{
           title: 'My Profile',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile/[id]"
+        options={{
+          title: 'My Profile',
+          href: null,
         }}
       />
     </Tabs>
