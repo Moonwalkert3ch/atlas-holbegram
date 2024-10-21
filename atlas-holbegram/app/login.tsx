@@ -1,5 +1,5 @@
-import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { Link, router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
 
 export default function Page() {
     return (
@@ -8,6 +8,11 @@ export default function Page() {
             <Link href="/register" replace>
                 <Text>Create a new account!</Text>
             </Link>
+            <Pressable onPress={() => {
+                router.push("/(tabs)/");
+            }}>
+                <Text>Sign In!</Text>
+            </Pressable>
         </View>
     )
 }
