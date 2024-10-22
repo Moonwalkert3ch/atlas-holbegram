@@ -14,10 +14,12 @@ export default function Logo() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50,
+        paddingTop: 100,
+        paddingBottom: 30,
     },
     logo: {
         width: 300,
-        height: 500,
-    }
-})
+        height: 200,
+        paddingBottom: 10,
+    },
+});
