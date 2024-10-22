@@ -32,6 +32,8 @@ return (
             }}
             placeholder="  Email"
             placeholderTextColor='white'
+            value={email}
+            onChangeText={(text) => setEmail(text)}
         />
         <TextInput 
             style={{
@@ -46,6 +48,9 @@ return (
             }}
             placeholder="  Password"
             placeholderTextColor='white'
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry
         />
         <Link href="/register" replace>
             <Text>Create a new account!</Text>
