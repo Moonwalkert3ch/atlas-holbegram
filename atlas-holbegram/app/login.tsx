@@ -1,4 +1,4 @@
-import { Link, router } from "expo-router";
+import { Link, router, useRouter } from "expo-router";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";  // Import the function directly
 
@@ -9,14 +9,25 @@ import { addWhitelistedNativeProps } from "react-native-reanimated/lib/typescrip
 import Logo from "@/components/logo";
 import SignInButton from "@/components/SignInButton";
 import RegistrationButton from "@/components/RegistrationButton";
+import { useAuth } from "@/components/AuthProvider";
+import Loading from "../components/Loading";
 
 export default function Page() {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [loading, setLoading] = useState(false);
+const auth = useAuth();
+const router = useRouter();
 
-function login() {
-    alert(`Logging in with ${email} and ${password}`);
+async function login() {
+    setLoading(true)
+    try {
+        await auth.login(email, password);
+        router.replace('/(tabs)/');
+    } catch (err) {
+        alert("Email or Password is incorrect");
+    }
+    setLoading(false)
 }
 
 return (
@@ -61,6 +72,7 @@ return (
         </Link> */}
         <SignInButton />
         <RegistrationButton />
+        {loading && <Loading />}
     </View>
     );
 };
