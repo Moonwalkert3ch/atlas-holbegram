@@ -4,6 +4,7 @@ import { Pressable, Text, View, StyleSheet, TextInput } from "react-native";
 import { container, form } from "../components/styles";
 import { addWhitelistedNativeProps } from "react-native-reanimated/lib/typescript/ConfigHelper";
 import Logo from "@/components/logo";
+import SignInButton from "@/components/SignInButton";
 
 export default function Page() {
 const [email, setEmail] = useState('');
@@ -29,7 +30,8 @@ return (
                 marginBottom: 15,
                 borderRadius: 10,
             }}
-            defaultValue="  Email"
+            placeholder="  Email"
+            placeholderTextColor='white'
         />
         <TextInput 
             style={{
@@ -42,16 +44,13 @@ return (
                 marginBottom: 15,
                 borderRadius: 10,
             }}
-            defaultValue="  Password"
+            placeholder="  Password"
+            placeholderTextColor='white'
         />
         <Link href="/register" replace>
             <Text>Create a new account!</Text>
         </Link>
-        <Pressable onPress={() => {
-            router.replace("/(tabs)/");
-        }}>
-            <Text>Sign In!</Text>
-        </Pressable>
+        <SignInButton />
     </View>
     );
 };
