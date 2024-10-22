@@ -1,42 +1,81 @@
-import { Alert, Button, Text, TextInput, View } from "react-native";
-import { Link } from "expo-router";
-import { useState } from "react";
+import { Link, router } from "expo-router";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";  // Import the function directly
 
+import { useState } from "react";
+import { Pressable, Text, Alert, View, StyleSheet, TextInput } from "react-native";
+import { container, form } from "../components/styles";
+import { addWhitelistedNativeProps } from "react-native-reanimated/lib/typescript/ConfigHelper";
+import Logo from "@/components/logo";
+import CreateAccountButton from "../components/CreateAccountButton";
+import LoginButton from "../components/LoginButton";
+
 export default function Page() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [loading, setLoading] = useState(false);
 
-  const handleSignUp = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);  // Use the function correctly
-      Alert.alert("Success", "Account created successfully!");
-      // Redirect to home or login after signup
-    } catch (error: any) {
-      setErrorMessage(error.message);
-    }
-  };
-
-  return (
-    <View style={{ flex: 1, justifyContent: "center", padding: 20 }}>
-      <Text style={{ fontSize: 24, marginBottom: 20 }}>Register</Text>
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        style={{ borderBottomWidth: 1, marginBottom: 20, padding: 8 }}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-        style={{ borderBottomWidth: 1, marginBottom: 20, padding: 8 }}
-      />
-      {errorMessage ? <Text style={{ color: "red" }}>{errorMessage}</Text> : null}
-      <Button title="Sign Up" onPress={handleSignUp} />
-    </View>
-  );
+function login() {
+    alert(`Logging in with ${email} and ${password}`);
 }
+
+return (
+    <View style={styles.container}>
+        <Logo />
+        <Text style={styles.titleText}>Register</Text>
+        <TextInput 
+            style={{
+                height: 50,
+                width: 350,
+                borderColor: '#1ed2af',
+                borderWidth: 1,
+                color: 'white',
+                padding: 2,
+                marginBottom: 5,
+                borderRadius: 10,
+            }}
+            placeholder="  Email"
+            placeholderTextColor='white'
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput 
+            style={{
+                height: 50,
+                width: 350,
+                borderColor: '#1ed2af',
+                borderWidth: 1,
+                color: 'white',
+                paddingBottom: 10,
+                marginBottom: 15,
+                borderRadius: 10,
+            }}
+            placeholder="  Password"
+            placeholderTextColor='white'
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry
+        />
+        {/* <Link href="/register" replace>
+            <Text>Create a new account!</Text>
+        </Link> */}
+        <CreateAccountButton />
+        <LoginButton />
+    </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        color: 'white',
+        padding: 5,
+    },
+    container: {
+        flex: 1, // full screen height
+        backgroundColor: '#00003c',
+        alignItems: "center",
+        // 
+    },
+})

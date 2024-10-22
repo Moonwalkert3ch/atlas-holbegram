@@ -1,17 +1,16 @@
 import { View, Pressable, StyleSheet, Alert, Text, SafeAreaView } from 'react-native';
 import { Link, router } from "expo-router";
-import { container } from './styles';
 
 
-export default function RegistrationButton() {
+export default function LoginButton() {
     return (
         <SafeAreaView>
             <View style={styles.button}>
-                <Link href="/register" replace>
+                <Link href="/login" replace>
                     <Pressable onPress={() => {
-                        router.replace("/register");
+                        router.replace("/login");
                     }}>
-                        <Text style={styles.buttonText}>Create a new account</Text>
+                        <Text style={styles.buttonText}>Login to existinng account</Text>
                     </Pressable>
                 </Link>
             </View>

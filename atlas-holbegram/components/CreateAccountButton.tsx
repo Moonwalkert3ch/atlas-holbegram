@@ -3,14 +3,14 @@ import { Link, router } from "expo-router";
 import { container } from './styles';
 
 
-export default function SignInButton() {
+export default function CreateAccountButton() {
     return (
     <SafeAreaView>
         <View style={styles.button}>
         <Pressable onPress={() => {
             router.replace("/(tabs)/");
         }}>
-            <Text style={styles.buttonText}>Sign In</Text>
+            <Text style={styles.buttonText}>Create Account</Text>
         </Pressable>
         </View>
         </SafeAreaView>

@@ -56,9 +56,9 @@ return (
             onChangeText={(text) => setPassword(text)}
             secureTextEntry
         />
-        <Link href="/register" replace>
+        {/* <Link href="/register" replace>
             <Text>Create a new account!</Text>
-        </Link>
+        </Link> */}
         <SignInButton />
         <RegistrationButton />
     </View>
@@ -68,7 +68,7 @@ return (
 const styles = StyleSheet.create({
     titleText: {
         fontWeight: 'bold',
-        fontSize: 32,
+        fontSize: 25,
         color: 'white',
         padding: 5,
     },
