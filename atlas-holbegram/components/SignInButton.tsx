@@ -2,14 +2,16 @@ import { View, Pressable, StyleSheet, Alert, Text, SafeAreaView } from 'react-na
 import { Link, router } from "expo-router";
 import { container } from './styles';
 
+// define prop type of onPress
+type SignInButtonProps = {
+    onPress: () => void;
+}
 
-export default function SignInButton() {
+export default function SignInButton({ onPress }: SignInButtonProps) {
     return (
     <SafeAreaView>
         <View style={styles.button}>
-        <Pressable onPress={() => {
-            router.replace("/(tabs)/");
-        }}>
+        <Pressable onPress={onPress}>
             <Text style={styles.buttonText}>Sign In</Text>
         </Pressable>
         </View>

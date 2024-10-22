@@ -48,7 +48,9 @@ return (
             placeholder="  Email"
             placeholderTextColor='white'
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
         />
         <TextInput 
             style={{
@@ -64,13 +66,11 @@ return (
             placeholder="  Password"
             placeholderTextColor='white'
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
             secureTextEntry
         />
-        {/* <Link href="/register" replace>
-            <Text>Create a new account!</Text>
-        </Link> */}
-        <SignInButton />
+        {/* /* pass login function to the create account button to trigger auth logic */}
+        <SignInButton onPress={login} />
         <RegistrationButton />
         {loading && <Loading />}
     </View>

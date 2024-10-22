@@ -26,6 +26,7 @@ async function register() {
         router.replace('/(tabs)/');
     } catch (err) {
         alert("Unable to create account");
+        console.error(err);
     }
     setLoading(false)
 }
@@ -48,7 +49,9 @@ return (
             placeholder="  Email"
             placeholderTextColor='white'
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
         />
         <TextInput 
             style={{
@@ -64,13 +67,11 @@ return (
             placeholder="  Password"
             placeholderTextColor='white'
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
             secureTextEntry
         />
-        {/* <Link href="/register" replace>
-            <Text>Create a new account!</Text>
-        </Link> */}
-        <CreateAccountButton />
+        {/* pass register function to the create account button to trigger auth logic */}
+        <CreateAccountButton onPress={register} />
         <LoginButton />
         {loading && <Loading />}
     </View>

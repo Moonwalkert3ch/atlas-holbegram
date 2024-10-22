@@ -2,14 +2,17 @@ import { View, Pressable, StyleSheet, Alert, Text, SafeAreaView } from 'react-na
 import { Link, router } from "expo-router";
 import { container } from './styles';
 
+// define prop type of onPress
+type CreateAccountButtonProps = {
+    onPress: () => void; 
+}
 
-export default function CreateAccountButton() {
+
+export default function CreateAccountButton({ onPress}: CreateAccountButtonProps) {
     return (
     <SafeAreaView>
         <View style={styles.button}>
-        <Pressable onPress={() => {
-            router.replace("/(tabs)/");
-        }}>
+        <Pressable onPress={onPress}>
             <Text style={styles.buttonText}>Create Account</Text>
         </Pressable>
         </View>
